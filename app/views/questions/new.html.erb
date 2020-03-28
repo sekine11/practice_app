@@ -1,0 +1,9 @@
+<h1>New</h1>
+
+<%= form_for(@question, url: questions_path) do |f| %>
+
+<%= f.text_field :subject, class:"form-control", placeholder:"題名" %>
+<%= f.text_area :content, class:"form-control", placeholder:"内容" %>
+<%= f.submit 'Update User' %>
+
+<% end %>

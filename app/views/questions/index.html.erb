@@ -1,0 +1,9 @@
+<h1>index</h1>
+
+<% @questions.each do |question| %>
+    
+    <%= question.subject %>
+    <%= question.content %>
+    <%= question.user.open_name %>
+    
+<% end %>
