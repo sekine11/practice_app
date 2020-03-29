@@ -1,9 +1,37 @@
-<h1>index</h1>
-
-<% @questions.each do |question| %>
-    
-    <%= question.subject %>
-    <%= question.content %>
-    <%= question.user.open_name %>
-    
-<% end %>
+<div class="main-contents container">
+      <div class="row">
+        <aside class="col-3 mb-4">
+          <h2 class="h4 font-weight-bold">Categories</h2>
+          <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action">Cell</button>
+            <button type="button" class="list-group-item list-group-item-action">DNA</button>
+            <button type="button" class="list-group-item list-group-item-action">RNA</button>
+            <button type="button" class="list-group-item list-group-item-action">Protein</button>
+            <button type="button" class="list-group-item list-group-item-action">NGS</button>
+          </div>
+        </aside>
+      	<main class="col-9 mb-4">
+          <h2 class="h4 font-weight-bold">Hot Topics</h2>
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Rank</th>
+                <th>Category</th>
+                <th>Subject</th>
+                <th>Updated Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @questions.each do |question| %>
+                     <tr>
+                           <td><i class="fas fa-fire ml-2"></i></td>
+                           <td>DNA</td>
+                           <td><%= link_to(question_path(question), class: "text-dark") do %><%= question.subject %><% end %></td>
+                           <td><%= question.updated_at %></td>
+                     </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>

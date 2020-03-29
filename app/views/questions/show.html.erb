@@ -1,5 +1,30 @@
-<h1>Syow</h1>
-
-
-<%= @question.subject %>
-<%= @question.content %>
+<div class="main-contents container">
+      <div class="row">
+        <aside class="col-3 mb-4">
+          <h2 class="h4 font-weight-bold">Categories</h2>
+          <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action">Cell</button>
+            <button type="button" class="list-group-item list-group-item-action">DNA</button>
+            <button type="button" class="list-group-item list-group-item-action">RNA</button>
+            <button type="button" class="list-group-item list-group-item-action">Protein</button>
+            <button type="button" class="list-group-item list-group-item-action">NGS</button>
+          </div>
+        </aside>
+      	<main class="question col-9 mb-4">
+          <h2 class="h4 font-weight-bold">Question</h2>
+          <div class="border-top border-bottom border-dark pt-4 pb-4 mb-4">
+            <h3 class="mb-4"><%= @question.subject %></h3>
+            <p class="mb-4 categories">DNA</p>
+            <p><%= @question.content %></p>
+          </div>
+          <div class="container border-left  border-dark ml-3">
+            <div class="border-top pt-4 pb-4">
+              <img class="profile-img" src="142_refileDownloadImage.png" alt="">
+              <span class="mr-4">Name：Fuji</span>
+              <span>Time：2020/04/30</span>
+              <p class="mt-4">ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ。</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
