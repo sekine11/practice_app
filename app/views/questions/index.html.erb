@@ -3,15 +3,15 @@
         <aside class="col-3 mb-4">
           <h2 class="h4 font-weight-bold">Categories</h2>
           <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action">Cell</button>
-            <button type="button" class="list-group-item list-group-item-action">DNA</button>
-            <button type="button" class="list-group-item list-group-item-action">RNA</button>
-            <button type="button" class="list-group-item list-group-item-action">Protein</button>
-            <button type="button" class="list-group-item list-group-item-action">NGS</button>
+            <% @questions.category_counts.each do |tag| %>
+                <button type="button" class="list-group-item list-group-item-action">
+                  <%= link_to tag, question_tag_path(tag.name), class: "mr-2" %>
+                </button>
+            <% end %>
           </div>
         </aside>
       	<main class="col-9 mb-4">
-          <h2 class="h4 font-weight-bold">Hot Topics</h2>
+          <h2 class="h4 font-weight-bold">Questions</h2>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
@@ -25,7 +25,11 @@
               <% @questions.each do |question| %>
                      <tr>
                            <td><i class="fas fa-fire ml-2"></i></td>
-                           <td>DNA</td>
+                           <td>
+                             <% question.category_list.map do |tag| %>
+                               <%= link_to tag, question_tag_path(tag), class: "mr-2" %>
+                             <% end %>
+                           </td>
                            <td><%= link_to(question_path(question), class: "text-dark") do %><%= question.subject %><% end %></td>
                            <td><%= question.updated_at %></td>
                      </tr>

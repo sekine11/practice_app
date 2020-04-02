@@ -27,3 +27,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # private
 gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
+gem 'acts-as-taggable-on' #Tag機能

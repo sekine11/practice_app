@@ -14,12 +14,13 @@
           <h2 class="h4 font-weight-bold">Question</h2>
           <div class="border-top border-bottom border-dark pt-4 pb-4 mb-4">
             <h3 class="mb-4"><%= @question.subject %></h3>
-            <p class="mb-4 categories">DNA</p>
+            <% @question.category_list.map do |tag| %>
+              <%= link_to tag, question_tag_path(tag), class: "mr-2" %>
+            <% end %>
             <p><%= @question.content %></p>
           </div>
           <div class="container border-left  border-dark ml-3">
             <div class="border-top pt-4 pb-4">
-              <img class="profile-img" src="142_refileDownloadImage.png" alt="">
               <span class="mr-4">Name：Fuji</span>
               <span>Time：2020/04/30</span>
               <p class="mt-4">ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ。</p>

@@ -4,6 +4,11 @@
 
 <%= f.text_field :subject, class:"form-control", placeholder:"題名" %>
 <%= f.text_area :content, class:"form-control", placeholder:"内容" %>
-<%= f.submit 'Update User' %>
+<% ["DNA","RNA","Protein","RNA"].each do |category| %>
+<%= f.check_box :category_list, {multiple: true}, category, nil %>
+<%= category %>
+<% end %>
+
+<%= f.submit 'Create Question' %>
 
 <% end %>
