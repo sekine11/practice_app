@@ -1,17 +1,10 @@
 <div class="main-contents container">
       <div class="row">
         <aside class="col-3 mb-4">
-          <h2 class="h4 font-weight-bold">Categories</h2>
-          <div class="list-group">
-            <% @questions.category_counts.each do |tag| %>
-                <button type="button" class="list-group-item list-group-item-action">
-                  <%= link_to tag, question_tag_path(tag.name), class: "mr-2" %>
-                </button>
-            <% end %>
-          </div>
+          <%= render "category" %>
         </aside>
       	<main class="col-9 mb-4">
-          <h2 class="h4 font-weight-bold">Questions</h2>
+          <h1 class="h3 font-weight-bold">Questions</h1>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>

@@ -7,4 +7,5 @@ class Question < ApplicationRecord
 	validates :subject, length: { maximum: 50 }
 	validates :content, length: { maximum: 1000 }
     belongs_to :user
+    has_many :question_comments, dependent: :destroy
 end

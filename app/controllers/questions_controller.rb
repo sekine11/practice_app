@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+    before_action :authenticate_user!, {only: [:new, :create, :destroy]}
+    before_action :ensure_correct_user, {only: [:destroy]}
     
     def new
         @question = Question.new
@@ -18,6 +20,9 @@ class QuestionsController < ApplicationController
     
     def show
         @question = Question.find(params[:id])
+        @questions_tags = Question.all
+        @comment = QuestionComment.new
+        @comments = @question.question_comments.order(id: "DESC")
     end
     
     def destroy
@@ -32,13 +37,21 @@ class QuestionsController < ApplicationController
     
     def index
       if params[:tag]
-        @questions = Question.tagged_with(params[:tag])
+        @questions_tags = Question.all.order(id: "DESC")
+        @questions = Question.tagged_with(params[:tag]).order(id: "DESC")
       else
-        @questions = Question.all
+        @questions_tags = Question.all.order(id: "DESC")
+        @questions = Question.all.order(id: "DESC")
       end
     end
     
     private
+    def ensure_correct_user
+      @question = Question.find(params[:id])
+     if current_user.id != @question.user.id
+        redirect_to questions_path
+     end
+    end
     def question_params
         params.require(:question).permit(:subject, :content, :tag, category_list: [])
     end
